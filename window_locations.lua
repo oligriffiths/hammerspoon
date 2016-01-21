@@ -14,3 +14,4 @@ addAppConfig('com.apple.Terminal', windowCenter10);
 addAppConfig('com.apple.Terminal', windowCenter8, 0);
 addAppConfig('com.tinyspeck.slackmacgap', windowMaximize);
 addAppConfig('com.tinyspeck.slackmacgap', windowCenter10, 0);
+addAppConfig('com.spotify.client', windowCenter10, 0);
