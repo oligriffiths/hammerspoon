@@ -13,17 +13,8 @@ end
 
 function merge(firstTable, secondTable)
 
-    local newTable = {};
-
-    for k,v in pairs(firstTable) do
-        newTable[k] = v
-    end
-
-    for k,v in pairs(secondTable) do
-        newTable[k] = v
-    end
-
-    return newTable;
+    local newTable = hs.fnutils.copy(firstTable);
+    return hs.fnutils.concat(newTable, secondTable);
 end
 
 -- load config on save
