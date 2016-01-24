@@ -3,8 +3,17 @@ require 'window_functions';
 -- Setup timer to stash every minute
 hs.timer.doEvery(60, stashWindowPositions);
 
+local lastScreenCount = 0;
+
 -- Setup screen watcher to restore window positions
 screenWatcher = hs.screen.watcher.new(function()
+
+    -- Don't restore if screen count hasn't changed. This happens when laptop lid is closed
+    local screenCount = tablelength(hs.screen.allScreens());
+    if (lastScreenCount == lastScreenCount) then
+        return;
+    end;
+
     hs.alert('Screen configuration changed');
     if restoreWindowPositions(true) == false then
         arrangeApps(apps, true);
