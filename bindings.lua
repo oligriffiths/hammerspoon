@@ -10,9 +10,11 @@ screenWatcher = hs.screen.watcher.new(function()
 
     -- Don't restore if screen count hasn't changed. This happens when laptop lid is closed
     local screenCount = tablelength(hs.screen.allScreens());
-    if (lastScreenCount == lastScreenCount) then
+    if (screenCount == lastScreenCount) then
         return;
     end;
+
+    lastScreenCount = screenCount;
 
     hs.alert('Screen configuration changed');
     if restoreWindowPositions(true) == false then

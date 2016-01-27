@@ -26,6 +26,7 @@ function reloadConfig(files)
         end
     end
     if doReload then
-        hs.reload()
+        hs.reload();
+        hs.alert('Config reloaded');
     end
 end
