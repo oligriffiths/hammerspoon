@@ -16,11 +16,12 @@ screenWatcher = hs.screen.watcher.new(function()
 
     lastScreenCount = screenCount;
 
-    hs.alert('Screen configuration changed');
-    if restoreWindowPositions(true) == false then
-        arrangeApps(apps, true);
-        stashWindowPositions();
-    end;
+    hs.timer.doAfter(5, function()
+        if restoreWindowPositions(false) == false then
+            arrangeApps(apps, true);
+            stashWindowPositions();
+        end;
+    end);
 end);
 screenWatcher:start()
 

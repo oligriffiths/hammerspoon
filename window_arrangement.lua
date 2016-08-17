@@ -81,23 +81,22 @@ function arrangeWindows(app, config)
 
             print(
                 'Arranging window: ' .. app:name() .. ' - ' .. window:title() ..
-                ' at grid (' .. windowConfig.x .. ', ' .. windowConfig.y .. ', ' .. windowConfig.w .. ', ' .. windowConfig.h .. ')'
+                ' at grid (' .. windowConfig.position.x .. ', ' .. windowConfig.position.y .. ', ' .. windowConfig.position.w .. ', ' .. windowConfig.position.h .. ')' ..
+                ' on screen (x: ' .. windowConfig.screen.x .. ', y: ' .. windowConfig.screen.y .. ')'
             );
 
-            if (windowConfig.s) then
-                hs.grid.set(window, windowConfig, {x = windowConfig.s, y = 0});
+            if (windowConfig.screen) then
+                hs.grid.set(window, windowConfig.position, windowConfig.screen);
             else
-                hs.grid.set(window, windowConfig);
+                hs.grid.set(window, windowConfig.position);
             end;
-
         end;
-
     end
 end
 
 function findwindow(windows, index)
 
-    if (index < 0) then
+    if (index == 0) then
         return nil;
     end;
 
@@ -108,26 +107,34 @@ function findwindow(windows, index)
     return findwindow(windows, index-1);
 end
 
-function addAppConfig(id, windows, screen)
+function addAppConfig(id, position, screen, numScreens)
 
-    -- Allow a single window to be passed
-    if (windows and windows[1] == nil) then
-        windows = { windows }
+    config = {
+        position = position
+    }
+
+    -- If no numScreens provided, init to 1
+    if numScreens == nil then
+        numScreens = 1
     end;
 
-    -- If screen provided, set on all windows
-    if screen ~= nil then
-        for i,window in ipairs(windows) do
-            window.s = screen;
-        end;
+    -- If no screen provided, init to 0
+    if screen == nil then
+        screen = 1
     end;
 
-    if apps[id] == nil then
-        apps[id] = {id = id, windows = windows};
+    -- If screen provided, check if it's a table
+    if (type(screen) == "table") then
+      config.screen = screen;
     else
-        for i,window in ipairs(windows) do
-            table.insert(apps[id].windows, window)
-        end;
+      screen = screen - 1
+      config.screen = {x = screen, y = 0};
     end;
 
+    -- Initialise the app config
+    if apps[id] == nil then
+        apps[id] = {id = id, windows = {}};
+    end;
+
+    apps[id].windows[numScreens] = config
 end

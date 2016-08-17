@@ -53,6 +53,10 @@ function restoreWindowPositions(alert)
 
     local screenCount = tablelength(hs.screen.allScreens());
 
+    if (screenCount == 0) then
+        return;
+    end;
+
     -- If there is no stashed data, return false
     if (stashedWindowPositions[screenCount] == nil) then
         print('-- No stashed window location data --');
