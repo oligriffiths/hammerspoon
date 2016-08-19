@@ -12,8 +12,8 @@ addAppConfig('com.google.Chrome', windowLeft10, 2, 2);
 addAppConfig('com.twitter.twitter-mac', windowRight4);
 addAppConfig('com.twitter.twitter-mac', windowRight2, 2, 2);
 
-addAppConfig('com.troupe.gitter.mac.Gitter', windowMaximize);
-addAppConfig('com.troupe.gitter.mac.Gitter', windowCenter10, 2);
+addAppConfig('com.troupe.gitter.mac.Gitter', windowMaximize, 1, 1);
+addAppConfig('com.troupe.gitter.mac.Gitter', windowCenter10, 1, 2);
 addAppConfig('com.troupe.gitter.mac.Gitter', windowMaximize, { x = 0, y = 1 }, 3);
 
 addAppConfig('it.bloop.airmail.beta11', windowMaximize);
