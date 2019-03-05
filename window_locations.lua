@@ -31,11 +31,10 @@ addAppConfig('com.francescodilorenzo.Mailbro', windowMaximize);
 addAppConfig('com.francescodilorenzo.Mailbro', windowCenter6x10, 1, 2);
 
 addAppConfig('com.apple.Terminal', windowCenter10x10);
-addAppConfig('com.apple.Terminal', windowCenter10x10, 1, 2);
-addAppConfig('com.apple.Terminal', windowCenter8x8, 1, 2);
+addAppConfig('com.apple.Terminal', windowCenter6x8, 1, 2);
 
 addAppConfig('com.googlecode.iterm2', windowCenter10x10);
-addAppConfig('com.googlecode.iterm2', windowCenter8x8, 1, 2);
+addAppConfig('com.googlecode.iterm2', windowCenter6x8, 1, 2);
 
 addAppConfig('com.tinyspeck.slackmacgap', windowMaximize, 1, 1);
 addAppConfig('com.tinyspeck.slackmacgap', windowRight6_12, 1, 2);
