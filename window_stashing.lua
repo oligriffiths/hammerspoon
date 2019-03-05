@@ -26,7 +26,7 @@ function stashWindowPositions(alert)
             };
 
             print(
-                'Stashing window: ' .. app:name() .. ' - ' .. window:title() ..
+                'Stashing window: ' .. app:bundleID() .. ' - ' .. window:title() ..
                 ' at (' .. config.frame.x .. ', ' .. config.frame.y .. ', ' .. config.frame.w .. ', ' .. config.frame.h .. ')'
             );
 
