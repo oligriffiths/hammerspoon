@@ -77,12 +77,12 @@ end
 function arrangeApp(id, appConfig)
 
     if appConfig.id == nil then
-        hs.alert('The app definition: ' .. id .. ' is missing an "id" property');
+        error('The app definition: ' .. id .. ' is missing an "id" property');
         return;
     end;
 
     if appConfig.windows == nil then
-        hs.alert('The app definition: ' .. id .. ' is missing a "windows" property');
+        error('The app definition: ' .. id .. ' is missing a "windows" property');
         return;
     end;
 
@@ -129,24 +129,18 @@ function findwindow(windows, index)
     return findwindow(windows, index-1);
 end
 
-function addAppConfig(id, position, screen, numScreens)
+function addAppConfig(id, position, numScreens, screen)
 
     config = {
         position = position
     }
 
-    -- If no numScreens provided, default to next screen
     if numScreens == nil then
-        if apps[id] == nil then
-            numScreens = 1
-        else
-            numScreens = tablelength(apps[id])
-        end;
+        error("numScreens must not be nil")
     end;
 
-    -- If no screen provided, init to 0
     if screen == nil then
-        screen = 1
+        error("screen must not be nil")
     end;
 
     -- If screen provided, check if it's a table
